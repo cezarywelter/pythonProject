@@ -1,0 +1,15 @@
+{% extends 'auto/glowny.html' %}
+
+{% block tytul %} Usuwanie wskazanych aut z bazy {% endblock %}
+
+{% block strona %}
+
+<h1>Czy na pewno chcesz usunąć z bazy auto {{ auto.marka }} ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń auto</button>
+</form>
+
+<a href="{% url 'wszystkie_auta' %}">Cofnij</a>
+
+{% endblock %}

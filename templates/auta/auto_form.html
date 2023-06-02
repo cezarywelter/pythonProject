@@ -1,0 +1,15 @@
+{% extends 'auta/glowny.html' %}
+
+{% block tytul %} Edycja i dodawanie aut {% endblock %}
+
+{% block strona %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Wyślij dane</button>
+</form>
+
+<a href="{% url 'wszystkie_auta' %}">Cofnij</a>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'auta/glowny.html' %}
+{% block tytul %} Login {% endblock %}
+
+{% block strona %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Zaloguj się</button>
+</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'auta/glowny.html' %}
+
+{% block tytul %} Lista wszystkich aut w bazie {% endblock %}
+
+{% block strona %}
+
+{% if user.is_authenticated %}
+     Witaj {{ user.username }}<br>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+<hr>
+
+<a href="{% url 'nowy_auto' %}">Nowe auto</a>
+
+{% if auta %}
+    <ul>
+    {% for auto in auta %}
+        <li><a href="{% url 'szczegoly_auta' auto.id %}">{{ auto.marka }}</a></li>
+        <a href="{% url 'edytuj_auto' auto.id %}">Edytuj auto</a>
+        <a href="{% url 'usun_auto' auto.id %}">Usuń auto</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak aut w bazie danych.</p>
+{% endif %}
+
+{% endblock %}

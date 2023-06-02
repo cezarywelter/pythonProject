@@ -1,0 +1,28 @@
+{% extends 'auta/glowny.html' %}
+
+{% block tytul %} Szczegółowy widok wskazanego auta w bazie {% endblock %}
+
+{% block strona %}
+
+<h1>{{ auta.marka }}</h1>
+<ul>
+    <li>Rok produkcji: {{ auto.rok_produkcji }}</li>
+    <li>Data premiery: {{ auto.premiera }}</li>
+    <li>Ocena: {{ auto.ocena }}</li>
+    <li>Opis auta: {{ auto.opis }}</li>
+    <li>Czy auto było sprzedawane w naszym kraju: {{ auto.w_sprzedazy }}</li>
+    {% if auto.extrainfo %}
+    <li>Dodatkowe informacje: {{ auto.extrainfo }} </li>
+    {% endif %}
+    {% for ocena in auto.ocena_set.all %}
+    <li>Recenzja: {{ ocena.recenzja }}, gwiazdki: {{ ocena.gwiazdki }}</li>
+    {% endfor %}
+    {% for konie_mechaniczne in auto.aktor_set.all %}
+    <li>Model_auta: {{ Model_auta.pojemnosc }} {{ Model_auta.konie_mechaniczne }}</li>
+    {% endfor %}
+
+</ul>
+
+<a href="{% url 'wszystkie_auta' %}">Cofnij</a>
+
+{% endblock %}
